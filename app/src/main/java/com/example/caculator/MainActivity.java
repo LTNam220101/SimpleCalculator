@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView textResult ;
-    private TextView textCalculation;
+    private TextView text ;
     private Button button0,button1,button2,button3,button4,button5,button6,button7,button8,button9,buttonC,buttonCE,buttonBS,buttonAdd,buttonDiv,buttonMul,buttonSub,buttonEqual;
     private  String calculation = "";
     private  String calculation1 = "";
@@ -25,8 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textResult = findViewById(R.id.textResult);
-        textCalculation = findViewById(R.id.textCalculator);
+        text = findViewById(R.id.textResult);
 
         button0 = findViewById(R.id.button0);
         button1 = findViewById(R.id.button1);
@@ -88,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 calculation = calculation + ((Button)v).getText();
                 calculation1 = calculation1 + ((Button)v).getText();
                 result+=((Button)v).getText();
-                textCalculation.setText(calculation);
+                text.setText(calculation);
                 break;
 
             case R.id.buttonAdd:
@@ -98,9 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                     else if(state1 ==1){
-                        calculation = textResult.getText().toString() + ((Button)v).getText();
+                        calculation = text.getText().toString() + ((Button)v).getText();
                         //Log.v("TEST", calculation);
-                        textCalculation.setText(calculation);
+                        text.setText(calculation);
                         break;
                     }
                     else {
@@ -111,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 calculation1 ="";
                 calculation = calculation + ((Button)v).getText();
                 calculation2 = calculation;
-                textCalculation.setText(calculation);
+                text.setText(calculation);
                 break;
             case R.id.buttonSub:
                 cal = 2;
@@ -120,9 +118,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                     else if(state1 ==1){
-                        calculation = textResult.getText().toString() + ((Button)v).getText();
+                        calculation = text.getText().toString() + ((Button)v).getText();
                         //Log.v("TEST", calculation);
-                        textCalculation.setText(calculation);
+                        text.setText(calculation);
                         break;
                     }
                     else {
@@ -133,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 calculation1 ="";
                 calculation = calculation + ((Button)v).getText();
                 calculation2 = calculation;
-                textCalculation.setText(calculation);
+                text.setText(calculation);
                 break;
             case R.id.buttonMul:
                 cal = 3;
@@ -142,9 +140,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                     else if(state1 ==1){
-                        calculation = textResult.getText().toString() + ((Button)v).getText();
+                        calculation = text.getText().toString() + ((Button)v).getText();
                         //Log.v("TEST", calculation);
-                        textCalculation.setText(calculation);
+                        text.setText(calculation);
                         break;
                     }
                     else {
@@ -155,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 calculation1 ="";
                 calculation = calculation + ((Button)v).getText();
                 calculation2 = calculation;
-                textCalculation.setText(calculation);
+                text.setText(calculation);
                 break;
             case R.id.buttonDiv:
                 cal = 4;
@@ -164,9 +162,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                     else if(state1 ==1){
-                        calculation = textResult.getText().toString() + ((Button)v).getText();
+                        calculation = text.getText().toString() + ((Button)v).getText();
                         //Log.v("TEST", calculation);
-                        textCalculation.setText(calculation);
+                        text.setText(calculation);
                         break;
                     }
                     else {
@@ -177,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 calculation1 ="";
                 calculation = calculation + ((Button)v).getText();
                 calculation2 = calculation;
-                textCalculation.setText(calculation);
+                text.setText(calculation);
                 break;
             case R.id.buttonEqual:
                 if(calculation =="+" ||
@@ -187,14 +185,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 }
                 if(state ==1 ){
-                    textResult.setText(textCalculation.getText().toString());
+                    text.setText(text.getText().toString());
                 }
                 if(calculation == "" && state ==1){
-                    textCalculation.setText(calculation);
+                    text.setText(calculation);
                     break;
                 }
-                if(textCalculation.getText().toString() == "" && state ==1){
-                    textCalculation.setText(calculation);
+                if(text.getText().toString() == "" && state ==1){
+                    text.setText(calculation);
                     break;
                 }
                 if(state==2 && calculation1 ==""){
@@ -203,28 +201,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 op2 = Integer.parseInt(calculation1);
                 switch (cal) {
                     case 1:
-                        textResult.setText(Integer.toString(op1 + op2));
-                        textCalculation.setText("");
+                        text.setText(Integer.toString(op1 + op2));
                         op1 = op1+op2;
                         break;
                     case 2:
-                        textResult.setText(Integer.toString(op1 - op2));
-                        textCalculation.setText("");
+                        text.setText(Integer.toString(op1 - op2));
                         op1 = op1-op2;
                         break;
                     case 3:
-                        textResult.setText(Integer.toString(op1 * op2));
-                        textCalculation.setText("");
+                        text.setText(Integer.toString(op1 * op2));
                         op1 = op1*op2;
                         break;
                     case 4:
                         if(op2 ==0){
-                            textResult.setText("Syntax error");
-                            textCalculation.setText("");
+                            text.setText("Syntax error");
                             break;
                         }
-                        textResult.setText(Double.toString((double) op1 / op2));
-                        textCalculation.setText("");
+                        text.setText(Double.toString((double) op1 / op2));
                         op1 = op1/op2;
                         break;
                 }
@@ -237,12 +230,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(state==1){
                     calculation ="";
                     calculation1 ="";
-                    textCalculation.setText(calculation);
+                    text.setText(calculation);
                 }
                 if(state ==2){
                     calculation = calculation2;
                     calculation1 ="";
-                    textCalculation.setText(calculation);
+                    text.setText(calculation);
                 }
                 break;
             case R.id.buttonCE:
@@ -252,23 +245,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 state1 = 0;
                 state = 1;
                 op1=0;
-                textCalculation.setText(calculation);
-                textResult.setText(calculation);
+                text.setText(calculation);
+//                text.setText(calculation);
                 break;
             case R.id.buttonBS:
                 if(state ==1){
                     if(calculation == ""){
-                        textCalculation.setText(calculation);
+                        text.setText(calculation);
                         break;
                     }
-                    else if(textCalculation.getText().toString() ==""){
-                        textCalculation.setText(calculation);
+                    else if(text.getText().toString() ==""){
+                        text.setText(calculation);
                         break;
                     }
                     else {
                         calculation = calculation.substring(0, calculation.length() - 1);
                         calculation1 = calculation1.substring(0, calculation1.length() - 1);
-                        textCalculation.setText(calculation);
+                        text.setText(calculation);
                         break;
                     }
                 }
@@ -278,13 +271,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         state =1;
                         calculation = calculation.substring(0, calculation.length() - 1);
                         calculation1 = calculation;
-                        textCalculation.setText(calculation);
+                        text.setText(calculation);
                         break;
                     }
                     else {
                         calculation = calculation.substring(0, calculation.length() - 1);
                         calculation1 = calculation1.substring(0, calculation1.length() - 1);
-                        textCalculation.setText(calculation);
+                        text.setText(calculation);
                         break;
                     }
                 }
